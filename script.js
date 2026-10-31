@@ -66,66 +66,74 @@ document.addEventListener('DOMContentLoaded', function () {
             'Total Cost: $' + totalCost.toFixed(2);
     });
 });
+
 // Find My Match section
-const availableSkills = [
-    { title: 'Python Programming', category: 'Programming', price: 15, provider: 'Alex' },
-    { title: 'JavaScript Help', category: 'Programming', price: 20, provider: 'Jordan' },
-    { title: 'Guitar Lessons', category: 'Music', price: 15, provider: 'Taylor' },
-    { title: 'Graphic Design', category: 'Design', price: 10, provider: 'Casey' },
-    { title: 'Photography', category: 'Photography', price: 8, provider: 'Morgan' },
-    { title: 'Resume Review', category: 'Career', price: 0, provider: 'Sam' }
-];
+let availableSkills = [];
 
-const findMatchButton = document.getElementById('find-match-button');
-
-if (findMatchButton) {
-    findMatchButton.addEventListener('click', function () {
-        const category = document.getElementById('match-category').value;
-        const maxPriceInput = document.getElementById('match-max-price');
-        const maxPrice = Number(maxPriceInput.value);
-        const resultsContainer = document.getElementById('match-results');
-
-        if (maxPriceInput.value.trim() === '' ||
-            !Number.isFinite(maxPrice) ||
-            maxPrice < 0) {
-            resultsContainer.innerHTML =
-                '<p>Please enter a valid maximum price of $0 or more.</p>';
-            return;
-        }
-
-        const userNeeds = {
-            category: category,
-            maxPrice: maxPrice
-        };
-
-        const matchedSkills = category === 'All'
-            ? availableSkills.filter(skill => skill.price <= maxPrice)
-            : window.matchSkillsToUser(userNeeds, availableSkills);
-
-        if (matchedSkills.length === 0) {
-            resultsContainer.innerHTML =
-                '<p>No skills match your preferences. Try another category or price.</p>';
-            return;
-        }
-
-        resultsContainer.innerHTML = '<h3>Your Matches</h3>';
-
-        matchedSkills.forEach(function (skill) {
-            const skillCard = document.createElement('div');
-            skillCard.className = 'match-result-card';
-
-            const skillTitle = document.createElement('h4');
-            skillTitle.textContent = skill.title;
-
-            const skillDetails = document.createElement('p');
-            skillDetails.textContent =
-                'Category: ' + skill.category +
-                ' | Price: $' + skill.price.toFixed(2) +
-                ' | Provider: ' + skill.provider;
-
-            skillCard.appendChild(skillTitle);
-            skillCard.appendChild(skillDetails);
-            resultsContainer.appendChild(skillCard);
-        });
-    });
+async function loadSkills() {
+    try {
+        availableSkills = await window.apiService.fetchSkills();
+        return availableSkills;
+    } catch (error) {
+        console.error('Error loading skills:', error);
+        return [];
+    }
 }
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await loadSkills();
+
+    const findMatchButton = document.getElementById('find-match-button');
+
+    if (findMatchButton) {
+        findMatchButton.addEventListener('click', function () {
+            const category = document.getElementById('match-category').value;
+            const maxPriceInput = document.getElementById('match-max-price');
+            const maxPrice = Number(maxPriceInput.value);
+            const resultsContainer = document.getElementById('match-results');
+
+            if (maxPriceInput.value.trim() === '' ||
+                !Number.isFinite(maxPrice) ||
+                maxPrice < 0) {
+                resultsContainer.innerHTML =
+                    '<p>Please enter a valid maximum price of $0 or more.</p>';
+                return;
+            }
+
+            const userNeeds = {
+                category: category,
+                maxPrice: maxPrice
+            };
+
+            const matchedSkills = category === 'All'
+                ? availableSkills.filter(skill => skill.price <= maxPrice)
+                : window.matchSkillsToUser(userNeeds, availableSkills);
+
+            if (matchedSkills.length === 0) {
+                resultsContainer.innerHTML =
+                    '<p>No skills match your preferences. Try another category or price.</p>';
+                return;
+            }
+
+            resultsContainer.innerHTML = '<h3>Your Matches</h3>';
+
+            matchedSkills.forEach(function (skill) {
+                const skillCard = document.createElement('div');
+                skillCard.className = 'match-result-card';
+
+                const skillTitle = document.createElement('h4');
+                skillTitle.textContent = skill.title;
+
+                const skillDetails = document.createElement('p');
+                skillDetails.textContent =
+                    'Category: ' + skill.category +
+                    ' | Price: $' + skill.price.toFixed(2) +
+                    ' | Provider: ' + skill.provider;
+
+                skillCard.appendChild(skillTitle);
+                skillCard.appendChild(skillDetails);
+                resultsContainer.appendChild(skillCard);
+            });
+        });
+    }
+});
