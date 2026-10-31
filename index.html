@@ -1,0 +1,141 @@
+<main>
+    <section id="home" class="hero">
+        <h2>Learn Something. Teach Something.</h2>
+        <p>Connect with other students to share skills and learn something new.</p>
+        <a href="#browse" class="button">Browse Skills</a>
+    </section>
+
+    <section id="browse" class="content">
+        <h2>Available Skills</h2>
+        <p>Check out what other students can teach you.</p>
+
+        <div class="skill-filters">
+            <button type="button" class="filter-btn active" data-category="All">All</button>
+            <button type="button" class="filter-btn" data-category="Programming">Programming</button>
+            <button type="button" class="filter-btn" data-category="Music">Music</button>
+            <button type="button" class="filter-btn" data-category="Career">Career</button>
+        </div>
+
+        <div class="skill-container">
+            
+            <div class="skill-card" data-category="Programming" onclick="showDetails(this)">
+                <h3>Python Programming</h3>
+                <p>Learn the basics of Python coding.</p>
+                <p>Price: $15</p>
+                <p>Provider: Alex</p>
+                <p class="extra-info" hidden>Learn variables, loops, and functions with hands-on examples.</p>
+                <button type="button">More Info</button>
+            </div>
+
+            
+            
+            <div class="skill-card" data-category="Career" onclick="showDetails(this)">
+                <h3>Graphic Design</h3>
+                <p>Learn how to create better designs.</p>
+                <p>Price: $10</p>
+                <p>Provider: Jamie</p>
+                <p class="extra-info" hidden>Practice using colors, fonts, and basic design tools.</p>
+                <button type="button">More Info</button>
+            </div>
+
+            
+            <div class="skill-card" data-category="Music" onclick="showDetails(this)">
+                <h3>Guitar Lessons</h3>
+                <p>Learn basic guitar chords and songs.</p>
+                <p>Price: $12</p>
+                <p>Provider: Taylor</p>
+                <p class="extra-info" hidden>Start with basic chords, strumming, and an easy song.</p>
+                <button type="button">More Info</button>
+            </div>
+
+            
+            <div class="skill-card" data-category="Career" onclick="showDetails(this)">
+                <h3>Photography</h3>
+                <p>Learn how to take better pictures.</p>
+                <p>Price: $8</p>
+                <p>Provider: Morgan</p>
+                <p class="extra-info" hidden>Learn about lighting, framing, and photo composition.</p>
+                <button type="button">More Info</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="offer" class="content">
+        <h2>Offer Your Skills</h2>
+        <p>Share what you know and help other students learn.</p>
+    </section>
+
+    <section id="about" class="content">
+        <h2>About Skill Swap</h2>
+        <p>Skill Swap helps students connect, teach, and learn from each other.</p>
+    </section>
+
+    <section id="cost-calculator">
+    <h2>Calculate Session Cost</h2>
+    <p>Estimate the cost of a skill-sharing session.</p>
+
+    <label for="hourly-rate">Hourly Rate ($):</label>
+    <input
+        type="number"
+        id="hourly-rate"
+        min="0"
+        step="0.01"
+        value="20"
+    >
+
+    <label for="session-hours">Session Hours:</label>
+    <input
+        type="number"
+        id="session-hours"
+        min="0"
+        step="0.5"
+        value="2"
+    >
+
+    <button type="button" id="calculate-cost-button">
+        Calculate Cost
+    </button>
+
+    <p id="cost-result" aria-live="polite">
+        Your total cost will appear here.
+    </p>
+</section>
+
+<section id="find-my-match" class="match-section">
+    <h2>Find My Match</h2>
+    <p>Find a skill that fits your interests and budget.</p>
+
+    <div class="match-form">
+        <label for="match-category">Category Preference:</label>
+        <select id="match-category">
+            <option value="All">All Categories</option>
+            <option value="Programming">Programming</option>
+            <option value="Music">Music</option>
+            <option value="Career">Career</option>
+            <option value="Design">Design</option>
+            <option value="Photography">Photography</option>
+        </select>
+
+        <label for="match-max-price">Maximum Price ($):</label>
+        <input
+            type="number"
+            id="match-max-price"
+            min="0"
+            step="0.01"
+            value="25"
+        >
+
+        <button type="button" id="find-match-button">Find My Match</button>
+    </div>
+
+    <div id="match-results" aria-live="polite">
+        <p>Choose your preferences and click "Find My Match."</p>
+    </div>
+</section>
+
+</main>
+
+<script src="skillswap-functions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+/* Skill cards layout */
+.skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+/* Individual skill cards */
+.skill-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 220px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Card hover effect */
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card h3 {
+    color: green;
+}
+
+.skill-card button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.skill-card button:hover {
+    background-color: green;
+}
+
+.extra-info {
+    background-color: #b4deb6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Cost Calculator Section */
+#cost-calculator {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+}
+
+#cost-calculator h2 {
+    margin-top: 0;
+}
+
+#cost-calculator label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#cost-calculator input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#calculate-cost-button {
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #218838;
+    color: white;
+    cursor: pointer;
+}
+
+#calculate-cost-button:hover {
+    background-color: #19692c;
+}
+
+#cost-result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+/* Find My Match section */
+.match-section {
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 900px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.match-section h2 {
+    margin-bottom: 10px;
+}
+
+.match-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+.match-form label {
+    font-weight: bold;
+}
+
+.match-form select,
+.match-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#find-match-button {
+    padding: 12px;
+    background-color: #198754;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#find-match-button:hover {
+    background-color: #146c43;
+}
+
+#match-results {
+    margin-top: 25px;
+}
+
+.match-result-card {
+    padding: 15px;
+    margin-top: 12px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.match-result-card h4 {
+    margin: 0 0 8px;
+}
+
+.match-result-card p {
+    margin: 0;
+}

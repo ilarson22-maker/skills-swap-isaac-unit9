@@ -1,0 +1,24 @@
+{
+  "name": "skills-swap-isaac-unit8",
+  "version": "1.0.0",
+  "description": "Skill Swap is a website that connects students who want to learn new skills with students who can teach them. Students can share their knowledge, learn from others, and exchange skills.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilarson22-maker/skills-swap-isaac-unit8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ilarson22-maker/skills-swap-isaac-unit8/issues"
+  },
+  "homepage": "https://github.com/ilarson22-maker/skills-swap-isaac-unit8#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
