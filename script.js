@@ -83,6 +83,36 @@ async function loadSkills() {
 document.addEventListener('DOMContentLoaded', async function () {
     await loadSkills();
 
+        // Create a new skill
+    const createSkillForm = document.getElementById('create-skill-form');
+    const createSkillMessage = document.getElementById('create-skill-message');
+
+    if (createSkillForm) {
+        createSkillForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const skillData = {
+                title: document.getElementById('skill-title').value,
+                category: document.getElementById('skill-category').value,
+                price: Number(document.getElementById('skill-price').value),
+                description: document.getElementById('skill-description').value
+            };
+
+            try {
+                await window.apiService.createSkill(skillData);
+
+                createSkillMessage.textContent = 'Skill created successfully!';
+                createSkillForm.reset();
+
+                await loadSkills();
+
+            } catch (error) {
+                console.error('Error creating skill:', error);
+                createSkillMessage.textContent = 'Could not create skill. Please try again.';
+            }
+        });
+    }
+
     const findMatchButton = document.getElementById('find-match-button');
 
     if (findMatchButton) {
